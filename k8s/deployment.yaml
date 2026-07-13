@@ -13,14 +13,32 @@ spec:
         app: predictor
     spec:
       containers:
-      - name: predictor
-        image: predictor:v0.1
-        imagePullPolicy: Never   # use the local image built inside minikube's Docker env, don't try to pull from a registry
-        ports:
-        - containerPort: 5000
-        env:
-        - name: LOG_LEVEL
-          valueFrom:
-            configMapKeyRef:
-              name: predictor-config
-              key: LOG_LEVEL
+        - name: predictor
+          image: predictor:v0.2
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          env:
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: predictor-config
+                  key: LOG_LEVEL
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
