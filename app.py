@@ -3,6 +3,8 @@ import datetime, random, os
 
 app = Flask(__name__)
 
+print("Starting")
+
 def fake_pipeline_run():
     return {
         "id": random.randint(1000, 9999),

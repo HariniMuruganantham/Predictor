@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment Files
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python Coverage
+.coverage
+htmlcov/
+
+# Helm
+*.tgz
+
+# Kubernetes
+kubeconfig
+
+# Rendered manifests
+rendered.yaml
+
+# Build artifacts
+dist/
+build/
+
+# Local database
+*.db
+*.sqlite3
